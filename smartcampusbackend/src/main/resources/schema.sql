@@ -1,6 +1,7 @@
 
--- Drop database smartcampus;
--- Create database smartcampus;
+DROP DATABASE IF EXISTS smartcampus;
+CREATE DATABASE smartcampus;
+USE smartcampus;
 
 -- ===========================
 -- USER TABLE
