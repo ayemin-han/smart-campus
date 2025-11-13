@@ -4,7 +4,7 @@ USE smartcampus;
 -- ===========================
 -- USER TABLE
 -- ===========================
-CREATE TABLE IF NOT EXISTS User (
+CREATE TABLE User (
     User_ID INT AUTO_INCREMENT PRIMARY KEY,
     Username VARCHAR(50) NOT NULL,
     Password VARCHAR(100) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS User (
 -- ===========================
 -- ADVISOR TABLE
 -- ===========================
-CREATE TABLE IF NOT EXISTS  Advisor (
+CREATE TABLE  Advisor (
     Advisor_ID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(100) NOT NULL,
     Email VARCHAR(100),
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS  Advisor (
 -- ===========================
 -- COURSE TABLE
 -- ===========================
-CREATE TABLE IF NOT EXISTS Course (
+CREATE TABLE Course (
     Course_Code VARCHAR(20) PRIMARY KEY,
     Title VARCHAR(100),
     Room VARCHAR(50),
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS Course (
 -- ===========================
 -- CLUBS TABLE
 -- ===========================
-CREATE TABLE IF NOT EXISTS Clubs (
+CREATE TABLE Clubs (
     Club_ID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(100),
     Members INT,
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS Clubs (
 -- ===========================
 -- SCHOLARSHIP TABLE
 -- ===========================
-CREATE TABLE IF NOT EXISTS Scholarship (
+CREATE TABLE Scholarship (
     Scholarship_ID INT AUTO_INCREMENT PRIMARY KEY,
     Title VARCHAR(100),
     Amount DECIMAL(10,2),
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS Scholarship (
 -- ===========================
 -- STUDENT TABLE
 -- ===========================
-CREATE TABLE IF NOT EXISTS Student (
+CREATE TABLE Student (
     Student_ID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(100) NOT NULL,
     Email VARCHAR(100),
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS Student (
 -- ===========================
 -- ADMIN TABLE
 -- ===========================
-CREATE TABLE IF NOT EXISTS Admin (
+CREATE TABLE Admin (
     Admin_ID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(100) NOT NULL,
     Email VARCHAR(100),
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS Admin (
 -- ===========================
 -- EVENTS TABLE
 -- ===========================
-CREATE TABLE IF NOT EXISTS Events (
+CREATE TABLE Events (
     Event_ID INT AUTO_INCREMENT PRIMARY KEY,
     Title VARCHAR(100),
     Type VARCHAR(50),
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS Events (
 -- ===========================
 -- ANNOUNCEMENT TABLE
 -- ===========================
-CREATE TABLE IF NOT EXISTS Announcement (
+CREATE TABLE Announcement (
     Announcement_ID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(100),
     Content TEXT,
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS Announcement (
 -- ===========================
 
 -- Student ↔ Course
-CREATE TABLE IF NOT EXISTS Enroll (
+CREATE TABLE Enroll (
     Student_ID INT,
     Course_Code VARCHAR(20),
     PRIMARY KEY (Student_ID, Course_Code),
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS Enroll (
 );
 
 -- Student ↔ Clubs
-CREATE TABLE IF NOT EXISTS Student_Clubs (
+CREATE TABLE Student_Clubs (
     Student_ID INT,
     Club_ID INT,
     PRIMARY KEY (Student_ID, Club_ID),
