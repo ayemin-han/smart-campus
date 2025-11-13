@@ -1,6 +1,6 @@
-Drop if exists smartcampus;
-Create database smartcampus;
-Use smartcampus;
+DROP DATABASE IF EXISTS smartcampus;
+CREATE DATABASE IF NOT EXISTS smartcampus;
+USE smartcampus;
 -- ===========================
 -- USER TABLE
 -- ===========================
