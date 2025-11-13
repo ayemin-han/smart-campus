@@ -169,12 +169,12 @@ INSERT  INTO Advisor (Name, Email, Ph_no, Department, Title) VALUES
 ('Dr. Emily Brown', 'emily.brown@university.edu', '0898765432', 'Mathematics', 'Associate Professor'),
 ('Dr. Michael Lee', 'michael.lee@university.edu', '0823456789', 'Physics', 'Lecturer');
 
-INSERT  INTO Course (Course_Code, Title, Room, Day, Time, Lecturer) VALUES
-('CS101', 'Introduction to Computer Science', 'Room 101', 'Monday', '09:00-11:00', 'Dr. John Smith'),
-('MATH201', 'Calculus II', 'Room 202', 'Tuesday', '10:00-12:00', 'Dr. Emily Brown'),
-('PHY150', 'Physics I', 'Room 303', 'Wednesday', '13:00-15:00', 'Dr. Michael Lee'),
-('ENG301', 'Advanced English Literature', 'Room 404', 'Thursday', '14:00-16:00', 'Prof. Laura Green'),
-('BIO110', 'Introduction to Biology', 'Room 505', 'Friday', '08:00-10:00', 'Dr. Sarah White');
+-- INSERT  INTO Course (Course_Code, Title, Room, Day, Time, Lecturer) VALUES
+-- ('CS101', 'Introduction to Computer Science', 'Room 101', 'Monday', '09:00-11:00', 'Dr. John Smith'),
+-- ('MATH201', 'Calculus II', 'Room 202', 'Tuesday', '10:00-12:00', 'Dr. Emily Brown'),
+-- ('PHY150', 'Physics I', 'Room 303', 'Wednesday', '13:00-15:00', 'Dr. Michael Lee'),
+-- ('ENG301', 'Advanced English Literature', 'Room 404', 'Thursday', '14:00-16:00', 'Prof. Laura Green'),
+-- ('BIO110', 'Introduction to Biology', 'Room 505', 'Friday', '08:00-10:00', 'Dr. Sarah White');
 
 INSERT  INTO Clubs (Name, Members, Category, Meeting, Status) VALUES
 ('Science Club', 25, 'Academic', 'Monday 15:00', 'Active'),
@@ -215,17 +215,17 @@ INSERT  INTO Admin (Admin_ID, Name, Email, Ph_no, Department)
 VALUES (1, 'John Doe', 'john.doe@example.com', '0812345678', 'IT Department');
 
 -- Enroll students in courses
-INSERT  INTO Enroll (Student_ID, Course_Code) VALUES
-(1, 'CS101'),
-(1, 'MATH201'),
-(2, 'PHY150'),
-(2, 'ENG301'),
-(3, 'CS101'),
-(3, 'BIO110'),
-(4, 'MATH201'),
-(4, 'ENG301'),
-(5, 'PHY150'),
-(5, 'BIO110');
+-- INSERT  INTO Enroll (Student_ID, Course_Code) VALUES
+-- (1, 'CS101'),
+-- (1, 'MATH201'),
+-- (2, 'PHY150'),
+-- (2, 'ENG301'),
+-- (3, 'CS101'),
+-- (3, 'BIO110'),
+-- (4, 'MATH201'),
+-- (4, 'ENG301'),
+-- (5, 'PHY150'),
+-- (5, 'BIO110');
 
 -- Student ↔ Clubs associations
 INSERT  INTO Student_Clubs (Student_ID, Club_ID) VALUES
