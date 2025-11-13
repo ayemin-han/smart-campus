@@ -4,7 +4,7 @@
 -- ===========================
 -- USER TABLE
 -- ===========================
-DROP TABLE User IF EXISTS;
+DROP TABLE IF EXISTS  User;
 CREATE TABLE User (
     User_ID INT AUTO_INCREMENT PRIMARY KEY,
     Username VARCHAR(50) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE User (
 -- ===========================
 -- ADVISOR TABLE
 -- ===========================
-DROP TABLE Advisor IF EXISTS;
+DROP TABLE  IF EXISTS Advisor;
 
 CREATE TABLE  Advisor (
     Advisor_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -30,7 +30,7 @@ CREATE TABLE  Advisor (
 -- ===========================
 -- COURSE TABLE
 -- ===========================
-DROP TABLE Course IF EXISTS;
+DROP TABLE  IF EXISTS Course;
 
 CREATE TABLE Course (
     Course_Code VARCHAR(20) PRIMARY KEY,
@@ -44,7 +44,7 @@ CREATE TABLE Course (
 -- ===========================
 -- CLUBS TABLE
 -- ===========================
-DROP TABLE Clubs IF EXISTS;
+DROP TABLE  IF EXISTS Clubs;
 
 CREATE TABLE Clubs (
     Club_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -58,7 +58,7 @@ CREATE TABLE Clubs (
 -- ===========================
 -- SCHOLARSHIP TABLE
 -- ===========================
-DROP TABLE Scholarship IF EXISTS;
+DROP TABLE  IF EXISTS Scholarship;
 
 CREATE TABLE Scholarship (
     Scholarship_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -72,7 +72,7 @@ CREATE TABLE Scholarship (
 -- ===========================
 -- STUDENT TABLE
 -- ===========================
-DROP TABLE Student IF EXISTS;
+DROP TABLE  IF EXISTS Student;
 
 CREATE TABLE Student (
     Student_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -95,7 +95,7 @@ CREATE TABLE Student (
 -- ===========================
 -- ADMIN TABLE
 -- ===========================
-DROP TABLE Admin IF EXISTS;
+DROP TABLE  IF EXISTS Admin;
 
 CREATE TABLE Admin (
     Admin_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -110,7 +110,7 @@ CREATE TABLE Admin (
 -- ===========================
 -- EVENTS TABLE
 -- ===========================
-DROP TABLE Events IF EXISTS;
+DROP TABLE  IF EXISTS Events;
 
 CREATE TABLE Events (
     Event_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -127,7 +127,7 @@ CREATE TABLE Events (
 -- ===========================
 -- ANNOUNCEMENT TABLE
 -- ===========================
-DROP TABLE Announcement IF EXISTS;
+DROP TABLE  IF EXISTS Announcement;
 
 CREATE TABLE Announcement (
     Announcement_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -145,7 +145,7 @@ CREATE TABLE Announcement (
 -- ===========================
 
 -- Student ↔ Course
-DROP TABLE Enroll IF EXISTS;
+DROP TABLE  IF EXISTS Enroll;
 
 CREATE TABLE Enroll (
     Student_ID INT,
@@ -158,7 +158,7 @@ CREATE TABLE Enroll (
 );
 
 -- Student ↔ Clubs
-DROP TABLE Student_Clubs IF EXISTS;
+DROP TABLE  IF EXISTS Student_Clubs;
 
 CREATE TABLE Student_Clubs (
     Student_ID INT,
