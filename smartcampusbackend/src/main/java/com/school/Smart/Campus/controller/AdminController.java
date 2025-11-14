@@ -27,28 +27,30 @@ public class AdminController {
     // CREATE ADMIN
     // --------------------------
     @PostMapping
-    public ResponseEntity<?> createAdmin(@RequestBody Admin adminRequest) {
+public ResponseEntity<?> createAdmin(@RequestBody Admin adminRequest) {
 
-        // Check if User exists
-        if (adminRequest.getUser() == null || adminRequest.getUser().getUserId() == 0) {
-            return ResponseEntity.badRequest().body("User ID is required");
-        }
-
-        Optional<User> userOptional = userRepository.findById(adminRequest.getUser().getUserId());
-        if (!userOptional.isPresent()) {
-            return ResponseEntity.badRequest().body("User not found");
-        }
-
-        // Link user to admin
-        adminRequest.setUser(userOptional.get());
-
-        // Ensure Admin_ID is same as User_ID
-        adminRequest.setAdminId(userOptional.get().getUserId());
-
-        Admin savedAdmin = adminRepository.save(adminRequest);
-
-        return ResponseEntity.ok(savedAdmin);
+    if (adminRequest.getUser() == null || adminRequest.getUser().getUserId() == 0) {
+        return ResponseEntity.badRequest().body("User ID is required.");
     }
+
+    int userId = adminRequest.getUser().getUserId();
+
+    User existingUser = userRepository.findById(userId).orElse(null);
+    if (existingUser == null) {
+        return ResponseEntity.badRequest().body("User not found with ID: " + userId);
+    }
+
+    Admin admin = new Admin();
+    admin.setUser(existingUser);
+    admin.setName(adminRequest.getName());
+    admin.setEmail(adminRequest.getEmail());
+    admin.setPhNo(adminRequest.getPhNo());
+    admin.setDepartment(adminRequest.getDepartment());
+
+    Admin savedAdmin = adminRepository.save(admin);
+    return ResponseEntity.ok(savedAdmin);
+}
+
 
     // --------------------------
     // GET ALL ADMINS
@@ -73,25 +75,39 @@ public class AdminController {
     // --------------------------
     // UPDATE ADMIN DETAILS
     // --------------------------
-    @PutMapping("/{id}")
-    public ResponseEntity<?> updateAdmin(@PathVariable int id, @RequestBody Admin adminDetails) {
-        Optional<Admin> optionalAdmin = adminRepository.findById(id);
+  @PutMapping("/{id}")
+public ResponseEntity<?> updateAdmin(@PathVariable int id, @RequestBody Admin adminDetails) {
+    Optional<Admin> optionalAdmin = adminRepository.findById(id);
 
-        if (!optionalAdmin.isPresent()) {
-            return ResponseEntity.status(404).body("Admin not found");
-        }
-
-        Admin admin = optionalAdmin.get();
-
-        admin.setName(adminDetails.getName());
-        admin.setEmail(adminDetails.getEmail());
-        admin.setPhNo(adminDetails.getPhNo());
-        admin.setDepartment(adminDetails.getDepartment());
-
-        Admin updatedAdmin = adminRepository.save(admin);
-
-        return ResponseEntity.ok(updatedAdmin);
+    if (!optionalAdmin.isPresent()) {
+        return ResponseEntity.status(404).body("Admin not found");
     }
+
+    Admin admin = optionalAdmin.get();
+
+    // ❌ Do NOT allow updating user or adminId
+    if (adminDetails.getUser() != null && adminDetails.getUser().getUserId() != admin.getAdminId()) {
+        return ResponseEntity.badRequest().body("User ID cannot be changed for an Admin.");
+    }
+
+    // ✅ Update only provided fields (ignore nulls)
+    if (adminDetails.getName() != null) {
+        admin.setName(adminDetails.getName());
+    }
+    if (adminDetails.getEmail() != null) {
+        admin.setEmail(adminDetails.getEmail());
+    }
+    if (adminDetails.getPhNo() != null) {
+        admin.setPhNo(adminDetails.getPhNo());
+    }
+    if (adminDetails.getDepartment() != null) {
+        admin.setDepartment(adminDetails.getDepartment());
+    }
+
+    Admin updatedAdmin = adminRepository.save(admin);
+    return ResponseEntity.ok(updatedAdmin);
+}
+
 
     // --------------------------
     // DELETE ADMIN
