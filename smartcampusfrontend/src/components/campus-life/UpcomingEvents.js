@@ -20,7 +20,7 @@ const UpcomingEvents = () => {
     fetchEvents();
 
     // Connect WebSocket
-    const socket = new SockJS("http://localhost:8080/ws-events");
+    const socket = new SockJS("https://smart-campus-10.onrender.com/ws-events");
     const client = new Client({
       webSocketFactory: () => socket,
       reconnectDelay: 5000,
