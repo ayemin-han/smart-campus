@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import api from '../../api';
+import api from '../api';
 import { Award, BookOpen, TrendingUp } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import GoHomeButton from '../Button/GoHomeButton';

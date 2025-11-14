@@ -4,7 +4,7 @@ import { BookOpen, Award, TrendingUp } from 'lucide-react';
 import ScheduleList from '../components/academic/ScheduleList';
 import GradesList from '../components/academic/GradesList';
 import EnrollmentList from '../components/academic/EnrollmentList';
-import api from '../../api';
+import api from '../api';
 import { AIChatbotWrapper } from "../components/chatbot/AIChatbotWrapper";
 
 const AcademicServices = () => {

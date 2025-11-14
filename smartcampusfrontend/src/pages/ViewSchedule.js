@@ -1,4 +1,4 @@
-import api from '../../api';
+import api from '../api';
 import { Clock, Home, Info } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
