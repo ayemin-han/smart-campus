@@ -13,7 +13,7 @@ const Sidebar = ({ active, onNavigate }) => {
     { id: 'campus-map', icon: <MapPin size={20} />, label: 'Campus Map' }
   ];
   const navigate = useNavigate();
-    const studentName = localStorage.getItem('studentName');
+    const studentName = localStorage.getItem('studentName') || 'Guest';
 
 
    const logout = () => {
