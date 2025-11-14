@@ -2,7 +2,7 @@ package com.school.Smart.Campus.model;
 
 import jakarta.persistence.*;
 import java.util.Set;
-
+import java.util.HashSet;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -14,6 +14,7 @@ public class Admin {
     private int adminId;
 
     @OneToOne
+    @MapsId // <--- Important: links Admin_ID to User_ID
     @JoinColumn(name = "Admin_ID", referencedColumnName = "User_ID")
     private User user;
 
@@ -29,16 +30,17 @@ public class Admin {
     @Column(name = "Department", length = 100)
     private String department;
 
-    // Optional: events and announcements created by this admin
-    @OneToMany(mappedBy = "admin")
+    // Optional: events created by this admin
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("admin")
-    private Set<Event> events;
+    private Set<Event> events = new HashSet<>();
 
-    @OneToMany(mappedBy = "admin")
+    // Optional: announcements created by this admin
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("admin")
-    private Set<Announcement> announcements;
+    private Set<Announcement> announcements = new HashSet<>();
 
-    // Constructors
+    // ===== Constructors =====
     public Admin() {}
 
     public Admin(User user, String name, String email, String phNo, String department) {
@@ -49,9 +51,8 @@ public class Admin {
         this.department = department;
     }
 
-    // Getters and Setters
+    // ===== Getters and Setters =====
     public int getAdminId() { return adminId; }
-    public void setAdminId(int adminId) { this.adminId = adminId; }
 
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }
@@ -74,4 +75,3 @@ public class Admin {
     public Set<Announcement> getAnnouncements() { return announcements; }
     public void setAnnouncements(Set<Announcement> announcements) { this.announcements = announcements; }
 }
-

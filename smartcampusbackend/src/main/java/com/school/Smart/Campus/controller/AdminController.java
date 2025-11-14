@@ -26,19 +26,15 @@ public class AdminController {
     // --------------------------
     // CREATE ADMIN
     // --------------------------
-    @PostMapping
+   @PostMapping
 public ResponseEntity<?> createAdmin(@RequestBody Admin adminRequest) {
 
     if (adminRequest.getUser() == null || adminRequest.getUser().getUserId() == 0) {
         return ResponseEntity.badRequest().body("User ID is required.");
     }
 
-    int userId = adminRequest.getUser().getUserId();
-
-    User existingUser = userRepository.findById(userId).orElse(null);
-    if (existingUser == null) {
-        return ResponseEntity.badRequest().body("User not found with ID: " + userId);
-    }
+    User existingUser = userRepository.findById(adminRequest.getUser().getUserId())
+            .orElseThrow(() -> new RuntimeException("User not found with ID: " + adminRequest.getUser().getUserId()));
 
     Admin admin = new Admin();
     admin.setUser(existingUser);
@@ -48,8 +44,9 @@ public ResponseEntity<?> createAdmin(@RequestBody Admin adminRequest) {
     admin.setDepartment(adminRequest.getDepartment());
 
     Admin savedAdmin = adminRepository.save(admin);
-    return ResponseEntity.ok(savedAdmin);
+    return ResponseEntity.status(HttpStatus.CREATED).body(savedAdmin);
 }
+
 
 
     // --------------------------
