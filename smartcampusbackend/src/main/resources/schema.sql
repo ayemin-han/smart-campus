@@ -211,8 +211,8 @@ INSERT  INTO Scholarship (Title, Amount, Type, Duration, Requirement) VALUES
 -- INSERT  INTO Student (Name, Email, Ph_no, Program, GPA, User_ID, Advisor_ID)
 -- VALUES ('Ethan Hunt', 'ethan.hunt@example.com', '0865432198', 'Civil Engineering', 3.6, 3, 1);
 
-INSERT  INTO Admin (Admin_ID, Name, Email, Ph_no, Department)
-VALUES (1, 'John Doe', 'john.doe@example.com', '0812345678', 'IT Department');
+-- INSERT  INTO Admin (Admin_ID, Name, Email, Ph_no, Department)
+-- VALUES (1, 'John Doe', 'john.doe@example.com', '0812345678', 'IT Department');
 
 -- Enroll students in courses
 -- INSERT  INTO Enroll (Student_ID, Course_Code) VALUES
