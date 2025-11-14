@@ -16,7 +16,7 @@ export default function CoursesPage() {
   const loadCourses = async () => {
     setLoading(true);
     try {
-      const res = await api.get('/api/courses');
+      const res = await api.get('/courses');
       setCourses(res.data);
     } catch (err) {
       console.error(err);
@@ -28,7 +28,7 @@ export default function CoursesPage() {
   const deleteCourse = async (courseCode) => {
     if (!window.confirm('Delete this course?')) return;
     try {
-      await api.delete(`/api/courses/${courseCode}`);
+      await api.delete(`/courses/${courseCode}`);
       loadCourses();
     } catch (err) {
       console.error(err);
@@ -121,9 +121,9 @@ function CourseForm({ initial, onClose }) {
     e.preventDefault();
     try {
       if (isEdit) {
-        await api.put(`/api/courses/${initial.courseCode}`, form);
+        await api.put(`/courses/${initial.courseCode}`, form);
       } else {
-        await api.post('/api/courses', form);
+        await api.post('/courses', form);
       }
       onClose();
     } catch (err) {

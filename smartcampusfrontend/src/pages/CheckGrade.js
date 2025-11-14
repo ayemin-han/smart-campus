@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../../api';
 import { Award, BookOpen, TrendingUp } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import GoHomeButton from '../Button/GoHomeButton';
@@ -16,7 +16,7 @@ const CheckGrades = () => {
   useEffect(() => {
     const fetchStudentCourses = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/courses/student/${studentId}`);
+        const response = await api.get(`/courses/student/${studentId}`);
         console.log('Fetched courses:', response.data);
         setCourses(response.data);
       } catch (err) {

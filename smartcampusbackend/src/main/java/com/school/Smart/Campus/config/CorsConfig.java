@@ -14,7 +14,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000") // React frontend
+                        .allowedOrigins("https://smart-campus-13.onrender.com/") // React frontend
                         .allowedMethods("*")
                         .allowedHeaders("*");
             }

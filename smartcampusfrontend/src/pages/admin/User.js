@@ -15,7 +15,7 @@ export default function UsersPage() {
   const loadUsers = async () => {
     setLoading(true);
     try {
-      const res = await api.get('/api/users');
+      const res = await api.get('/users');
       setUsers(res.data);
     } catch (err) {
       console.error(err);
@@ -27,7 +27,7 @@ export default function UsersPage() {
   const deleteUser = async (userId) => {
     if (!window.confirm('Delete this user?')) return;
     try {
-      await api.delete(`/api/users/${userId}`);
+      await api.delete(`/users/${userId}`);
       loadUsers();
     } catch (err) {
       console.error(err);
@@ -116,9 +116,9 @@ function UserForm({ initial, onClose }) {
     e.preventDefault();
     try {
       if (isEdit) {
-        await api.put(`/api/users/${initial.userId}`, form);
+        await api.put(`/users/${initial.userId}`, form);
       } else {
-        await api.post('/api/users', form);
+        await api.post('/users', form);
       }
       onClose();
     } catch (err) {

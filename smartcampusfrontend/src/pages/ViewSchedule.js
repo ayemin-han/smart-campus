@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../../api';
 import { Clock, Home, Info } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +16,7 @@ const ViewSchedule = () => {
   useEffect(() => {
     const fetchStudentCourses = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/courses/student/${studentId}`);
+        const response = await api.get(`/courses/student/${studentId}`);
         setSchedule(response.data);
         setLoading(false);
       } catch (err) {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Clock, MapPin, Users, ChevronRight } from "lucide-react";
 import { Client } from "@stomp/stompjs";
 import SockJS from "sockjs-client";
-import axios from "axios";
+import api from '../../api';
 
 const UpcomingEvents = () => {
   const [events, setEvents] = useState([]);
@@ -11,7 +11,7 @@ const UpcomingEvents = () => {
     // Fetch initial events
     const fetchEvents = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/api/events");
+        const res = await api.get("/events");
         setEvents(res.data);
       } catch (error) {
         console.error("Error fetching events:", error);

@@ -16,7 +16,7 @@ export default function AnnouncementsPage() {
   const load = async () => {
     setLoading(true);
     try {
-      const res = await api.get('/api/announcements');
+      const res = await api.get('/announcements');
       setItems(res.data);
     } catch (e) {
       console.error(e);
@@ -27,7 +27,7 @@ export default function AnnouncementsPage() {
   const del = async (id) => {
     if (!window.confirm('Delete announcement?')) return;
     try {
-      await api.delete(`/api/announcements/${id}`);
+      await api.delete(`/announcements/${id}`);
       load();
     } catch (e) {
       console.error(e);
@@ -119,9 +119,9 @@ function AnnouncementForm({ initial, onClose }) {
 
       const payload = { ...form, admin: { adminId } };
       if (isEdit) {
-        await api.put(`/api/announcements/${initial.announcementId}`, form);
+        await api.put(`/announcements/${initial.announcementId}`, form);
       } else {
-        await api.post('/api/announcements', payload);
+        await api.post('/announcements', payload);
       }
       onClose();
     } catch (err) {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from '../../api';
 
 export default function StudentCourses() {
   const [data, setData] = useState([]);
@@ -9,13 +9,13 @@ export default function StudentCourses() {
   }, []);
 
   const fetchAll = async () => {
-    const res = await axios.get("http://localhost:8080/api/student-courses");
+    const res = await api.get("/student-courses");
     setData(res.data);
   };
 
   const handleDelete = async (studentId, courseId) => {
     if (window.confirm("Are you sure you want to remove this record?")) {
-      await axios.delete(`http://localhost:8080/api/student-courses/${studentId}/${courseId}`);
+      await api.delete(`/student-courses/${studentId}/${courseId}`);
       fetchAll();
     }
   };

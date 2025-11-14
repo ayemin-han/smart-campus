@@ -4,7 +4,7 @@ import { BookOpen, Award, TrendingUp } from 'lucide-react';
 import ScheduleList from '../components/academic/ScheduleList';
 import GradesList from '../components/academic/GradesList';
 import EnrollmentList from '../components/academic/EnrollmentList';
-import axios from 'axios';
+import api from '../../api';
 import { AIChatbotWrapper } from "../components/chatbot/AIChatbotWrapper";
 
 const AcademicServices = () => {
@@ -20,7 +20,7 @@ const AcademicServices = () => {
       if (!studentId) return;
 
       try {
-        const response = await axios.get(`http://localhost:8080/api/courses/student/${studentId}`);
+        const response = await api.get(`/courses/student/${studentId}`);
         setCourseCount(response.data.length);
       } catch (error) {
         console.error('Error fetching student courses:', error);

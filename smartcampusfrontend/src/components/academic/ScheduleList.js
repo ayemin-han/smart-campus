@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../api';
 
 const ScheduleList = () => {
   const [schedule, setSchedule] = useState([]);
@@ -19,7 +19,7 @@ const ScheduleList = () => {
       }
 
       try {
-        const response = await axios.get(`http://localhost:8080/api/courses/student/${studentId}`);
+        const response = await api.get(`/courses/student/${studentId}`);
         setSchedule(response.data);
         setLoading(false);
       } catch (err) {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from '../../api';
 
 const ScholarshipsTab = ({}) => {
   const [scholarshipInfo, setScholarshipInfo] = useState(null);
@@ -9,8 +9,8 @@ const ScholarshipsTab = ({}) => {
   useEffect(() => {
     const fetchScholarship = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:8080/api/scholarships/student/${studentId}`
+        const res = await api.get(
+          `/scholarships/student/${studentId}`
         );
         setScholarshipInfo(res.data);
       } catch (error) {

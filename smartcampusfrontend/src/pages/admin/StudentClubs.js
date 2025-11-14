@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from '../../api';
 
 export default function StudentClubs() {
   const [data, setData] = useState([]);
@@ -9,13 +9,13 @@ export default function StudentClubs() {
   }, []);
 
   const fetchAll = async () => {
-    const res = await axios.get("http://localhost:8080/api/student-clubs");
+    const res = await api.get("/student-clubs");
     setData(res.data);
   };
 
   const handleDelete = async (studentId, clubId) => {
     if (window.confirm("Are you sure you want to remove this record?")) {
-      await axios.delete(`http://localhost:8080/api/student-clubs/${studentId}/${clubId}`);
+      await api.delete(`/student-clubs/${studentId}/${clubId}`);
       fetchAll();
     }
   };

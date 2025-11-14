@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Clock, ChevronRight } from 'lucide-react';
-import axios from 'axios';
+import api from '../../api';
 import { useNavigate } from 'react-router-dom';
 
 const StudentClubs = () => {
@@ -20,7 +20,7 @@ const StudentClubs = () => {
       }
 
       try {
-        const response = await axios.get(`http://localhost:8080/api/clubs/student/${studentId}`);
+        const response = await api.get(`/clubs/student/${studentId}`);
         setClubs(response.data || []);
       } catch (err) {
         console.error('Error fetching clubs:', err);

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Card, styles} from '../style';
 // Replace with your actual login URL
-const AUTH_LOGIN_URL = 'http://localhost:8080/api/auth/login';
+const AUTH_LOGIN_URL = 'https://smart-campus-10.onrender.com/api/auth/login';
 
 
 export default function LoginPage({ onLoginSuccess }) {

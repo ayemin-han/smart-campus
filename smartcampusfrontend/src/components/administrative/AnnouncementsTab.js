@@ -12,7 +12,7 @@ const AnnouncementsTab = () => {
   const fetchAnnouncements = async () => {
     try {
       if (!refreshing) setLoading(true);
-      const response = await api.get("/api/announcements");
+      const response = await api.get("/announcements");
       setAnnouncements(response.data);
       setError(null);
     } catch (err) {

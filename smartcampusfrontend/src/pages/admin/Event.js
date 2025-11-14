@@ -46,7 +46,7 @@ export default function EventsPage() {
   const load = async () => {
     setLoading(true);
     try {
-      const res = await api.get("/api/events");
+      const res = await api.get("/events");
       setEvents(res.data);
     } catch (err) {
       console.error(err);
@@ -63,7 +63,7 @@ export default function EventsPage() {
   const del = async (id) => {
     if (!window.confirm("Delete event?")) return;
     try {
-      await api.delete(`/api/events/${id}`);
+      await api.delete(`/events/${id}`);
       load();
     } catch (err) {
       console.error(err);
@@ -209,9 +209,9 @@ function EventForm({ initial, onClose }) {
 
       const payload = { ...form, admin: { adminId }}; 
       if (isEdit) {
-        await api.put(`/api/events/${initial.eventId}`, form);
+        await api.put(`/events/${initial.eventId}`, form);
       } else {
-        await api.post("/api/events", payload);
+        await api.post("/events", payload);
       }
       onClose();
     } catch (err) {

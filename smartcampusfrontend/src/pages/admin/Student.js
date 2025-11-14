@@ -29,7 +29,7 @@ export default function StudentsPage() {
   const load = async (program = "") => {
     setLoading(true);
     try {
-      const res = await api.get("/api/students", {
+      const res = await api.get("/students", {
       params: program ? { program } : {},
     });
       setStudents(res.data);
@@ -48,7 +48,7 @@ export default function StudentsPage() {
   const deleteStudent = async (id) => {
     if (!window.confirm("Are you sure you want to delete this student?")) return;
     try {
-      await api.delete(`/api/students/${id}`);
+      await api.delete(`/students/${id}`);
       load();
     } catch (err) {
       console.error(err);
@@ -257,9 +257,9 @@ function StudentForm({ initial, onClose }) {
 
     try {
       if (isEdit) {
-        await api.put(`/api/students/${initial.studentId}`, payload);
+        await api.put(`/students/${initial.studentId}`, payload);
       } else {
-        await api.post("/api/students", payload);
+        await api.post("/students", payload);
       }
       onClose();
     } catch (err) {
